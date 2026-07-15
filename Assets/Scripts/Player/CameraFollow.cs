@@ -6,14 +6,14 @@ public class CameraFollow : MonoBehaviour
     public float suavidade = 5f;
 
     [Header("Configuração do Fundo")]
-    public Transform background; // Nova vaga criada para arrastar o seu fundo aqui!
+    public Transform background; 
 
     void LateUpdate()
     {
         if (alvo == null)
             return;
 
-        // Calcula a nova posição suave para a câmera ir atrás do jogador
+        // para a câmera ir atrás do jogador
         Vector3 novaPosicao = new Vector3(
             alvo.position.x,
             alvo.position.y,
@@ -26,7 +26,7 @@ public class CameraFollow : MonoBehaviour
             suavidade * Time.deltaTime
         );
 
-        // Se você colocou o background na vaga do Inspector, ele segue a câmera instantaneamente
+        // o meu background segue a camera
         if (background != null)
         {
             // Mantém o X e Y idênticos aos da câmera atual, mas trava o Z em 0 (ou 10) para aparecer na tela
