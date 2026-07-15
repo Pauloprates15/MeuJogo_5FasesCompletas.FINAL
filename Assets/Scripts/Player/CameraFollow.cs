@@ -13,7 +13,7 @@ public class CameraFollow : MonoBehaviour
         if (alvo == null)
             return;
 
-        // para a câmera ir atrás do jogador
+        // para a câmera ir atrás do personagem
         Vector3 novaPosicao = new Vector3(
             alvo.position.x,
             alvo.position.y,
