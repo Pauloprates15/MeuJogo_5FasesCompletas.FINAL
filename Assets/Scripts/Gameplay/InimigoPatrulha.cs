@@ -11,7 +11,7 @@ public class InimigoPatrulha : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool indoParaDireita = true;
 
-    // Variáveis internas para guardar a posição real dos limites no mapa
+    // limites no mapa
     private float limiteEsquerdo;
     private float limiteDireito;
 
@@ -20,12 +20,11 @@ public class InimigoPatrulha : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        // O SEGREDO: Salva a posição onde você colocou o inimigo no mapa 
-        // e calcula os limites matematicamente a partir dali!
+       
         limiteEsquerdo = transform.position.x - distanciaPatrulha;
         limiteDireito = transform.position.x + distanciaPatrulha;
 
-        // Ajuste inicial para garantir que ele comece olhando para o lado certo (Direita)
+        // Ajuste para garantir que ele comece olhando para o lado certo (Direita)
         AjustarDirecaoVisual();
     }
 
@@ -47,7 +46,7 @@ public class InimigoPatrulha : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Define a velocidade constante na horizontal baseada na direção usando o rb.linearVelocity que você já usava
+        // Define a velocidade constante na horizontal
         float velocidadeAtual = indoParaDireita ? velocidade : -velocidade;
         rb.linearVelocity = new Vector2(velocidadeAtual, rb.linearVelocity.y);
     }
@@ -56,7 +55,7 @@ public class InimigoPatrulha : MonoBehaviour
     {
         if (spriteRenderer == null) return;
 
-        // Mantida a sua lógica exata: flipX ativo para Direita, desativado para Esquerda
+        // flipX ativo para Direita, desativado para Esquerda
         if (indoParaDireita)
         {
             spriteRenderer.flipX = true;
@@ -67,10 +66,10 @@ public class InimigoPatrulha : MonoBehaviour
         }
     }
 
-    // Desenha as linhas e bolinhas vermelhas automaticamente no mapa para te ajudar!
+    // Desenha as linhas e bolinhas vermelhas 
     void OnDrawGizmos()
     {
-        // Se o jogo estiver rodando, desenha com base nos limites fixos calculados no Start
+        
         if (Application.isPlaying)
         {
             Gizmos.color = Color.red;
@@ -78,7 +77,7 @@ public class InimigoPatrulha : MonoBehaviour
             Gizmos.DrawSphere(new Vector3(limiteEsquerdo, transform.position.y, 0), 0.1f);
             Gizmos.DrawSphere(new Vector3(limiteDireito, transform.position.y, 0), 0.1f);
         }
-        // Se o jogo estiver pausado/editando, mostra a prévia de onde os limites vão ficar ao redor do inimigo
+        
         else
         {
             Gizmos.color = Color.red;
