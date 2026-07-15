@@ -1,0 +1,15 @@
+Please note that the creator develops games exclusively using Unity, so guidance for other software cannot be provided.
+
+All tiles are provided as PNG image files.
+
+The following settings are required for correct usage:
+Sprite Mode: Multiple
+Pixels Per Unit: 32
+Filter Mode: Point
+
+When creating sprites:
+Open Sprite Editor
+Select Slice
+Set Grid By Cell Size
+Set Pixel Size to 32 px
+Click Apply
